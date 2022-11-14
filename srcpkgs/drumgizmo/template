@@ -1,0 +1,27 @@
+# Template file for 'drumgizmo'
+pkgname=drumgizmo
+version=0.9.20
+revision=1
+#archs="i686 x86_64"
+#wrksrc=
+#create_wrksrc=yes
+build_style=gnu-configure
+configure_args="--enable-lv2"
+#make_build_args=""
+#make_install_args=""
+#conf_files=""
+#make_dirs="/var/log/dir 0755 root root"
+hostmakedepends="gettext pkg-config"
+makedepends="lv2 libsndfile-devel zita-resampler-devel libX11-devel
+ libXext-devel libsmf-devel glib-devel jack-devel"
+depends=""
+short_desc="Multichannel, multilayered drum plugin and stand-alone application"
+maintainer="Veikka Valtteri Kallinen <valtteri@kallinen.xyz>"
+license="LGPL-3.0-or-later"
+homepage="http://www.drumgizmo.org"
+distfiles="http://www.drumgizmo.org/releases/drumgizmo-${version}/drumgizmo-${version}.tar.gz"
+checksum=005f2040b881dbd8fdeb7b88f384f2347202d2ac0458e0aa999214586abc576a
+
+case "$XBPS_TARGET_MACHINE" in
+	*musl) configure_args+=" --disable-nls" ;;
+esac
